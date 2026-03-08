@@ -3,7 +3,7 @@
  * Data: 8 de mar. de 2026
  * Descrição: TODO
  */
-package com.stormdev;
+package com.stormdev.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
