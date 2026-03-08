@@ -48,7 +48,7 @@ public class CouponService {
 
     @Transactional
     public void delete(UUID id) {
-        Coupon coupon = couponRepository.findById(id)
+        Coupon coupon = couponRepository.findByIdAndDeletedFalse(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Coupon not found"));
 
         coupon.markAsDeleted();

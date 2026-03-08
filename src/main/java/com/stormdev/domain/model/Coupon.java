@@ -15,7 +15,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -26,7 +26,6 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE coupons SET deleted = true WHERE id = ?")
-@Where(clause = "deleted = false")
 public class Coupon {
 
     @Id
