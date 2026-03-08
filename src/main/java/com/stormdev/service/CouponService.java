@@ -9,6 +9,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.stormdev.domain.exception.BusinessException;
+import com.stormdev.domain.exception.ResourceNotFoundException;
+import com.stormdev.domain.model.Coupon;
+import com.stormdev.dto.request.CouponCreateRequest;
+import com.stormdev.dto.response.CouponResponse;
+import com.stormdev.mapper.CouponMapper;
+import com.stormdev.repository.CouponRepository;
+
 import java.util.UUID;
 
 @Service
