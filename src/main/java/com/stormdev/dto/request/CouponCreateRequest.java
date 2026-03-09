@@ -10,18 +10,25 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.Instant;
 
 public record CouponCreateRequest(
-        @NotBlank(message = "Code is required")
+
+        @NotBlank(message = "code is required")
         String code,
 
-        @NotNull(message = "Discount is required")
-        @DecimalMin(value = "0.01", message = "Discount must be greater than zero")
-        BigDecimal discount,
+        @NotBlank(message = "description is required")
+        String description,
 
-        @NotNull(message = "Expiration date is required")
-        LocalDate expirationDate
+        @NotNull(message = "discountValue is required")
+        @DecimalMin(value = "0.01", message = "discountValue must be greater than zero")
+        BigDecimal discountValue,
+
+        @NotNull(message = "expirationDate is required")
+        Instant expirationDate,
+
+        @NotNull(message = "published is required")
+        Boolean published
 ) {
 }
 
