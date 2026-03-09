@@ -54,47 +54,6 @@ Este projeto foi desenvolvido como **desafio técnico backend**, demonstrando or
 
 ---
 
-# Arquitetura do Projeto
-
-A aplicação segue uma organização em camadas inspirada em **DDD (Domain Driven Design)**.
-
-src/main/java/com/stormdev
-
-common
-└─ constants
-└─ ErrorMessages.java
-
-controller
-└─ CouponController.java
-
-domain
-├─ model
-│ └─ Coupon.java
-└─ exception
-├─ BusinessException.java
-└─ ResourceNotFoundException.java
-
-dto
-├─ request
-│ └─ CouponCreateRequest.java
-└─ response
-└─ CouponResponse.java
-
-mapper
-└─ CouponMapper.java
-
-repository
-└─ CouponRepository.java
-
-service
-└─ CouponService.java
-
-exception
-└─ GlobalExceptionHandler.java
-
-config
-└─ OpenApiConfig.java
-
 
 ---
 
