@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/coupon")
+@RequestMapping("api/v1/coupon")
 @RequiredArgsConstructor
 @Tag(name = "Coupon", description = "Endpoint coupon")
 public class CouponController {
