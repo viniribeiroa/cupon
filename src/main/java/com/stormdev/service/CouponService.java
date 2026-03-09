@@ -5,6 +5,7 @@
  */
 package com.stormdev.service;
 
+import com.stormdev.common.constants.ErrorMessages;
 import com.stormdev.domain.exception.BusinessException;
 import com.stormdev.domain.exception.ResourceNotFoundException;
 import com.stormdev.domain.model.Coupon;
@@ -36,7 +37,7 @@ public class CouponService {
         );
 
         if (repository.existsByCodeAndDeletedFalse(coupon.getCode())) {
-            throw new BusinessException("Coupon code already exists");
+            throw new BusinessException(ErrorMessages.COUPON_CODE_ALREADY_EXISTS);
         }
 
         Coupon saved = repository.save(coupon);
@@ -48,7 +49,7 @@ public class CouponService {
     @Transactional(readOnly = true)
     public CouponResponse findById(UUID id) {
         Coupon coupon = repository.findByIdAndDeletedFalse(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Coupon not found"));
+                .orElseThrow(() -> new ResourceNotFoundException(ErrorMessages.COUPON_NOT_FOUND));
 
         coupon.refreshStatus();
         return mapper.toResponse(coupon);
@@ -57,7 +58,7 @@ public class CouponService {
     @Transactional
     public void delete(UUID id) {
         Coupon coupon = repository.findByIdAndDeletedFalse(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Coupon not found"));
+                .orElseThrow(() -> new ResourceNotFoundException(ErrorMessages.COUPON_NOT_FOUND));
 
         coupon.delete();
         repository.save(coupon);
