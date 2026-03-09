@@ -54,13 +54,9 @@ Este projeto foi desenvolvido como **desafio técnico backend**, demonstrando or
 
 ---
 
-
----
-
 # Endpoints da API
 
 Base URL http://localhost:8080
-
 
 ---
 
