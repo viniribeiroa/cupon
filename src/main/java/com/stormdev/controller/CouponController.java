@@ -3,6 +3,8 @@ package com.stormdev.controller;
 import com.stormdev.dto.request.CouponCreateRequest;
 import com.stormdev.dto.response.CouponResponse;
 import com.stormdev.service.CouponService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/coupon")
 @RequiredArgsConstructor
+@Tag(name = "coupon", description = "Endpoint coupon")
 public class CouponController {
 
     private final CouponService service;
