@@ -61,7 +61,7 @@ Base URL http://localhost:8080
 ---
 
 ## Criar Cupom
-POST /coupon
+POST api/v1/coupon
 
 ### Request
 
@@ -90,7 +90,7 @@ Response
 }
 ```
 ## Buscar Cupom
-GET /coupon/{id}
+GET api/v1/coupon/{id}
 
 ### Response
 200 OK
@@ -108,7 +108,7 @@ GET /coupon/{id}
 }
 ```
 ## Remover Cupom
-DELETE /coupon/{id}
+DELETE api/v1/coupon/{id}
 
 ### Response
 204 No Content
