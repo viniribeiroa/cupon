@@ -10,7 +10,11 @@ public final class ErrorMessages {
     private ErrorMessages() {
     }
 
-    public static final String COUPON_NOT_FOUND = "Coupon not found";
+    /**
+     * Coupon Erros
+     */
+    public static final String COUPON_NOT_FOUND =
+    		"Coupon not found";
 
     public static final String COUPON_ALREADY_DELETED =
             "Coupon already deleted";
@@ -29,8 +33,14 @@ public final class ErrorMessages {
 
     public static final String COUPON_EXPIRED =
             "Expired coupon cannot be redeemed";
+    
+    public static final String COUPON_DELETE =
+    		"Deleted coupon cannot be redeemed";
 
-    // Validation errors
+    
+    /**
+     * Validation Errors
+     */
     public static final String DESCRIPTION_REQUIRED =
             "Description is required";
 

@@ -5,6 +5,7 @@
  */
 package com.stormdev.domain.model;
 
+import com.stormdev.common.constants.ErrorMessages;
 import com.stormdev.domain.exception.BusinessException;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -81,7 +82,7 @@ public class Coupon {
 
     public void delete() {
         if (this.deleted) {
-            throw new BusinessException("Coupon already deleted");
+            throw new BusinessException(ErrorMessages.COUPON_ALREADY_DELETED);
         }
         this.deleted = true;
         this.status = CouponStatus.DELETED;
@@ -89,13 +90,13 @@ public class Coupon {
 
     public void redeem() {
         if (this.deleted) {
-            throw new BusinessException("Deleted coupon cannot be redeemed");
+            throw new BusinessException(ErrorMessages.COUPON_DELETE);
         }
         if (isExpired()) {
-            throw new BusinessException("Expired coupon cannot be redeemed");
+            throw new BusinessException(ErrorMessages.COUPON_EXPIRED);
         }
         if (this.redeemed) {
-            throw new BusinessException("Coupon already redeemed");
+            throw new BusinessException(ErrorMessages.COUPON_ALREADY_REDEEMED);
         }
         this.redeemed = true;
         this.status = CouponStatus.REDEEMED;
@@ -125,13 +126,13 @@ public class Coupon {
 
     private static String sanitizeCode(String code) {
         if (code == null || code.isBlank()) {
-            throw new BusinessException("Coupon code is required");
+            throw new BusinessException(ErrorMessages.COUPON_CODE_REQUIRED);
         }
 
         String sanitized = code.replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
 
         if (sanitized.length() != 6) {
-            throw new BusinessException("Coupon code must contain exactly 6 alphanumeric characters");
+            throw new BusinessException(ErrorMessages.COUPON_CODE_INVALID_LENGTH);
         }
 
         return sanitized;
@@ -139,21 +140,21 @@ public class Coupon {
 
     private static String validateDescription(String description) {
         if (description == null || description.isBlank()) {
-            throw new BusinessException("Description is required");
+            throw new BusinessException(ErrorMessages.COUPON_CODE_REQUIRED);
         }
         return description.trim();
     }
 
     private static BigDecimal validateDiscountValue(BigDecimal discountValue) {
         if (discountValue == null || discountValue.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new BusinessException("Discount value must be greater than zero");
+            throw new BusinessException(ErrorMessages.DISCOUNT_INVALID);
         }
         return discountValue;
     }
 
     private static Instant validateExpirationDate(Instant expirationDate) {
         if (expirationDate == null) {
-            throw new BusinessException("Expiration date is required");
+            throw new BusinessException(ErrorMessages.EXPIRATION_DATE_REQUIRED);
         }
         return expirationDate;
     }
