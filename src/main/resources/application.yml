@@ -28,5 +28,6 @@ springdoc:
     path: /swagger-ui.html
 
 server:
+  port: ${SERVER_PORT:8080}
   error:
     include-message: never

@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: coupon-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: coupons_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d coupons_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: coupon-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      APP_NAME: cupon
+      DB_URL: jdbc:postgresql://postgres:5432/coupons_db
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      FLYWAY_ENABLED: "true"
+      FLYWAY_URL: jdbc:postgresql://postgres:5432/coupons_db
+      FLYWAY_USER: postgres
+      FLYWAY_PASSWORD: postgres
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
