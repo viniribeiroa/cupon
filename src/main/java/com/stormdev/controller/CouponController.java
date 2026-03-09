@@ -1,3 +1,8 @@
+/**
+ * Autor: VINICIUS
+ * Data: 8 de mar. de 2026
+ * Descrição: TODO
+ */
 package com.stormdev.controller;
 
 import com.stormdev.dto.request.CouponCreateRequest;

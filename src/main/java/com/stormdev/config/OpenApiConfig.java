@@ -21,7 +21,7 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Coupon API")
                         .version("v1")
-                        .description("API para gerenciamento de cupons com regras de domínio, soft delete e testes de integração")
+                        .description("API para gerenciamento de cupons com regras de domínio")
                         .contact(new Contact().name("Vinicius Ribeiro")))
                 .externalDocs(new ExternalDocumentation()
                         .description("README do projeto"));
